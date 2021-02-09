@@ -22,5 +22,7 @@
     <Folder Include="DTOs\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+    <Folder Include="Errors\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
 </Project>
