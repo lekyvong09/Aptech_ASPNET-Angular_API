@@ -26,5 +26,6 @@
     <Folder Include="Errors\" />
     <Folder Include="Middleware\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>
