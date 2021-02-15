@@ -43,5 +43,11 @@ namespace API.Controllers
             return Ok(_mapper.Map<MemberDto>(user));
         }
 
+        [HttpGet("secondWay/{username}")]
+        public async Task<ActionResult<MemberDto>> GetUserSecondWay(string username)
+        {
+            return Ok(await _userRepository.GetMemberAsync(username));
+        }
+
     }
 }
