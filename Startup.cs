@@ -47,6 +47,7 @@ namespace API
             });
 
             // Scope means that the service will be disposed after the end of HTTP request
+            services.Configure<CloudinarySettings>(_config.GetSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
