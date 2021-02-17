@@ -50,6 +50,7 @@ namespace API
             services.Configure<CloudinarySettings>(_config.GetSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPhotoService, PhotoService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
             services.AddDbContext<DataContext>(options =>
