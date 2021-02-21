@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -12,10 +13,12 @@ namespace API.Data
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public UserRepository(DataContext context)
+        public UserRepository(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<AppUser> GetUserByIdAsync(int id)
@@ -56,9 +59,10 @@ namespace API.Data
                     }).SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<AppUser>> GetUsersAsync()
+        public async Task<IEnumerable<MemberDto>> GetUsersAsync()
         {
-            return await _context.Users.Include(p => p.Photos).ToListAsync();
+            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
+            return _mapper.Map<IEnumerable<MemberDto>>(users);
         }
 
         public async Task<bool> SaveAllAsync()

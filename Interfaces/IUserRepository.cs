@@ -12,7 +12,7 @@ namespace API.Interfaces
 
         Task<bool> SaveAllAsync();
 
-        Task<IEnumerable<AppUser>> GetUsersAsync();
+        Task<IEnumerable<MemberDto>> GetUsersAsync();
 
         Task<AppUser> GetUserByIdAsync(int id);
 
