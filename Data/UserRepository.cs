@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -34,35 +35,38 @@ namespace API.Data
         // second way
         public async Task<MemberDto> GetMemberAsync(string username)
         {
-            return await _context.Users.Where(x => x.Username == username)
-                    .Select(user => new MemberDto
-                    {
-                        Id = user.Id,
-                        Username = user.Username,
-                        PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url,
-                        Age = user.GetAge(),
-                        KnownAs = user.KnownAs,
-                        Created = user.Created,
-                        LastActive = user.LastActive,
-                        Gender = user.Gender,
-                        Introduction = user.Introduction,
-                        LookingFor = user.LookingFor,
-                        Interests = user.Interests,
-                        City = user.City,
-                        Country = user.Country,
-                        Photos = user.Photos.Select(photo => new PhotoDto
-                                            {
-                                                Id = photo.Id,
-                                                Url = photo.Url,
-                                                IsMain = photo.IsMain
-                                            }).ToList()
-                    }).SingleOrDefaultAsync();
+            var user = await _context.Users.Where(x => x.Username == username)
+                    .SingleOrDefaultAsync();
+            return _mapper.Map<MemberDto>(user);
         }
 
         public async Task<IEnumerable<MemberDto>> GetUsersAsync()
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
-            return _mapper.Map<IEnumerable<MemberDto>>(users);
+            var users = await _context.Users
+                        .Include(p => p.Photos)
+                        .Select(user => new MemberDto
+                        {
+                            Id = user.Id,
+                            Username = user.Username,
+                            PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url,
+                            Age = user.GetAge(),
+                            KnownAs = user.KnownAs,
+                            Created = user.Created,
+                            LastActive = user.LastActive,
+                            Gender = user.Gender,
+                            Introduction = user.Introduction,
+                            LookingFor = user.LookingFor,
+                            Interests = user.Interests,
+                            City = user.City,
+                            Country = user.Country,
+                            Photos = user.Photos.Select(photo => new PhotoDto
+                            {
+                                Id = photo.Id,
+                                Url = photo.Url,
+                                IsMain = photo.IsMain
+                            }).ToList()
+                        }).ToListAsync();
+            return users;
         }
 
         public async Task<bool> SaveAllAsync()
