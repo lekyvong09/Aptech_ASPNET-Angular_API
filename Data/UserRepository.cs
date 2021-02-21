@@ -40,9 +40,9 @@ namespace API.Data
             return _mapper.Map<MemberDto>(user);
         }
 
-        public async Task<IEnumerable<MemberDto>> GetUsersAsync()
+        public async Task<PagedList<MemberDto>> GetUsersAsync(UserParams userParams)
         {
-            var users = await _context.Users
+            var query = _context.Users
                         .Include(p => p.Photos)
                         .Select(user => new MemberDto
                         {
@@ -65,8 +65,8 @@ namespace API.Data
                                 Url = photo.Url,
                                 IsMain = photo.IsMain
                             }).ToList()
-                        }).ToListAsync();
-            return users;
+                        }).OrderBy(x => x.Id).AsNoTracking();
+            return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAllAsync()
