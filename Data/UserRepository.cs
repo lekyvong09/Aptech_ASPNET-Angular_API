@@ -42,9 +42,12 @@ namespace API.Data
 
         public async Task<PagedList<MemberDto>> GetUsersAsync(UserParams userParams)
         {
+            var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+            var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
+
             var query = _context.Users
                         .Include(p => p.Photos)
-                        .Where(u => u.Username != userParams.CurrentUsername && u.Gender == userParams.Gender)
+                        .Where(u => u.Username != userParams.CurrentUsername && u.Gender == userParams.Gender && u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob)
                         .Select(user => new MemberDto
                         {
                             Id = user.Id,
