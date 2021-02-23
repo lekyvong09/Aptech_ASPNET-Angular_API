@@ -44,6 +44,7 @@ namespace API.Data
         {
             var query = _context.Users
                         .Include(p => p.Photos)
+                        .Where(u => u.Username != userParams.CurrentUsername && u.Gender == userParams.Gender)
                         .Select(user => new MemberDto
                         {
                             Id = user.Id,
@@ -66,6 +67,7 @@ namespace API.Data
                                 IsMain = photo.IsMain
                             }).ToList()
                         }).OrderBy(x => x.Id).AsNoTracking();
+
             return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
         }
 
