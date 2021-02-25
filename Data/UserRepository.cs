@@ -29,7 +29,7 @@ namespace API.Data
 
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
-            return await _context.Users.Include(p => p.Photos).SingleOrDefaultAsync(x => x.Username == username);
+            return await _context.Users.Include(p => p.Photos).AsSingleQuery().SingleOrDefaultAsync(x => x.Username == username);
         }
 
         // second way
@@ -45,8 +45,8 @@ namespace API.Data
             var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
             var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
 
-            var query = _context.Users
-                        .Include(p => p.Photos)
+            IQueryable<MemberDto> query = _context.Users
+                        .Include(p => p.Photos).AsSingleQuery()
                         .Where(u => u.Username != userParams.CurrentUsername && u.Gender == userParams.Gender && u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob)
                         .Select(user => new MemberDto
                         {
@@ -69,7 +69,15 @@ namespace API.Data
                                 Url = photo.Url,
                                 IsMain = photo.IsMain
                             }).ToList()
-                        }).OrderBy(x => x.Id).AsNoTracking();
+                        }).OrderBy(x => x.Id);
+
+            query = userParams.OrderBy switch
+            {
+                "created" => query.OrderByDescending(u => u.Created),
+                _ => query.OrderByDescending(u => u.LastActive)
+            };
+
+            query = query.AsNoTracking();
 
             return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
         }
