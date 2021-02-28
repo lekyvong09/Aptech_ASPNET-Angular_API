@@ -17,7 +17,7 @@ namespace API.Helpers
 
             if (!resultContext.HttpContext.User.Identity.IsAuthenticated) return;
 
-            var username = resultContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var username = resultContext.HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
 
             // to use GetService,using Microsoft.Extensions.DependencyInjection;
             var repo = resultContext.HttpContext.RequestServices.GetService<IUserRepository>();

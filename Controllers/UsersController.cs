@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
@@ -24,20 +25,23 @@ namespace API.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IPhotoService _photoService;
+        private readonly ILogger<UsersController> _logger;
 
-        public UsersController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService)
+        public UsersController(IUserRepository userRepository, IMapper mapper,
+            IPhotoService photoService, ILogger<UsersController> logger)
         {
             //_context = context;
             _userRepository = userRepository;
             _mapper = mapper;
             _photoService = photoService;
+            _logger = logger;
         }
 
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
             userParams.CurrentUsername = user.Username;
@@ -49,6 +53,8 @@ namespace API.Controllers
 
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize,
                 users.TotalCount, users.TotalPages);
+
+            _logger.LogWarning("Testing Logger");
 
             return Ok(users);
         }
@@ -70,7 +76,7 @@ namespace API.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
             _mapper.Map(memberUpdateDto, user);
@@ -86,7 +92,7 @@ namespace API.Controllers
         [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
             var result = await _photoService.AddPhotoAsync(file);
@@ -115,7 +121,7 @@ namespace API.Controllers
         [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetMainPhoto(int photoId)
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
             var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
@@ -139,7 +145,7 @@ namespace API.Controllers
         [HttpDelete("delete-photo/{photoId}")]
         public async Task<ActionResult> DeletePhoto(int photoId)
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
             var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
