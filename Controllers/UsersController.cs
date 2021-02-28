@@ -54,7 +54,7 @@ namespace API.Controllers
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize,
                 users.TotalCount, users.TotalPages);
 
-            _logger.LogWarning("Testing Logger");
+            //_logger.LogWarning("Testing Logger");
 
             return Ok(users);
         }

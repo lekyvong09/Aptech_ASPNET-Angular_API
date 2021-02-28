@@ -2808,3 +2808,1314 @@ SELECT @@ROWCOUNT;" (0723d8ff)
 2021-02-28T18:31:47.8514640+07:00 0HM6RRHN9TN8K:00000002 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 728.0926ms (afa2e885)
 2021-02-28T18:31:47.8521790+07:00 0HM6RRHN9TN8K:00000002 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
 2021-02-28T18:31:47.8591170+07:00 0HM6RRHN9TN8K:00000002 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?predicate=liked - - - 200 - application/json;+charset=utf-8 981.2728ms (791a596a)
+2021-02-28T18:43:38.0312230+07:00 0HM6RRHN9TN8L:00000002 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:43:38.0425470+07:00 0HM6RRHN9TN8L:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:43:38.0450270+07:00 0HM6RRHN9TN8L:00000002 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 14.7542ms (791a596a)
+2021-02-28T18:43:38.0729540+07:00 0HM6RRHN9TN8L:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:43:38.0743130+07:00 0HM6RRHN9TN8L:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:43:38.0789360+07:00 0HM6RRHN9TN8L:00000003 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:43:38.0815350+07:00 0HM6RRHN9TN8L:00000003 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:43:38.0818600+07:00 0HM6RRHN9TN8L:00000003 [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:43:38.1246230+07:00 0HM6RRHN9TN8L:00000003 [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:43:38.2725420+07:00 0HM6RRHN9TN8L:00000003 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:43:38.3919280+07:00 0HM6RRHN9TN8L:00000003 [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:43:38.4266220+07:00 0HM6RRHN9TN8L:00000003 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:43:38.4667680+07:00 0HM6RRHN9TN8L:00000003 [INF] Executed DbCommand ("9"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32), @__p_5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_5 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:43:38.4784590+07:00 0HM6RRHN9TN8L:00000003 [WRN] Testing Logger (625a9051)
+2021-02-28T18:43:38.4819180+07:00 0HM6RRHN9TN8L:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:43:38.4898140+07:00 0HM6RRHN9TN8L:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:43:38.4994650+07:00 0HM6RRHN9TN8L:00000003 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:43:38.5272990+07:00 0HM6RRHN9TN8L:00000003 [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 402.5313ms (afa2e885)
+2021-02-28T18:43:38.5276290+07:00 0HM6RRHN9TN8L:00000003 [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:43:38.5279330+07:00 0HM6RRHN9TN8L:00000003 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 454.9638ms (791a596a)
+2021-02-28T18:44:29.0444530+07:00 0HM6RRHN9TN8L:00000004 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:44:29.0446200+07:00 0HM6RRHN9TN8L:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:44:29.0448250+07:00 0HM6RRHN9TN8L:00000004 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 0.3586ms (791a596a)
+2021-02-28T18:44:29.0479930+07:00 0HM6RRHN9TN8L:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:44:29.0481210+07:00 0HM6RRHN9TN8L:00000005 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:44:29.0511910+07:00 0HM6RRHN9TN8L:00000005 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:44:29.0519680+07:00 0HM6RRHN9TN8L:00000005 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:44:29.0521890+07:00 0HM6RRHN9TN8L:00000005 [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:44:29.0531340+07:00 0HM6RRHN9TN8L:00000005 [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:44:29.0538870+07:00 0HM6RRHN9TN8L:00000005 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:44:29.0575590+07:00 0HM6RRHN9TN8L:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:44:29.0637410+07:00 0HM6RRHN9TN8L:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:44:29.0677720+07:00 0HM6RRHN9TN8L:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32), @__p_5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_5 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:44:29.0684520+07:00 0HM6RRHN9TN8L:00000005 [WRN] Testing Logger (625a9051)
+2021-02-28T18:44:29.0714440+07:00 0HM6RRHN9TN8L:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:44:29.0767640+07:00 0HM6RRHN9TN8L:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:44:29.0821200+07:00 0HM6RRHN9TN8L:00000005 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:44:29.0825270+07:00 0HM6RRHN9TN8L:00000005 [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 29.3247ms (afa2e885)
+2021-02-28T18:44:29.0825680+07:00 0HM6RRHN9TN8L:00000005 [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:44:29.0827510+07:00 0HM6RRHN9TN8L:00000005 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 34.7611ms (791a596a)
+2021-02-28T18:46:31.7550900+07:00 0HM6RRHN9TN8M:00000002 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:46:31.7552470+07:00 0HM6RRHN9TN8M:00000002 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:46:31.7554230+07:00 0HM6RRHN9TN8M:00000002 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 0.3249ms (791a596a)
+2021-02-28T18:46:31.7571070+07:00 0HM6RRHN9TN8M:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:46:31.7572680+07:00 0HM6RRHN9TN8M:00000003 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:46:31.7576780+07:00 0HM6RRHN9TN8M:00000003 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:46:31.7578190+07:00 0HM6RRHN9TN8M:00000003 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:46:31.7578700+07:00 0HM6RRHN9TN8M:00000003 [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:46:31.7579990+07:00 0HM6RRHN9TN8M:00000003 [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:46:31.7601020+07:00 0HM6RRHN9TN8M:00000003 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:46:31.7643500+07:00 0HM6RRHN9TN8M:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:46:31.7690980+07:00 0HM6RRHN9TN8M:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:46:31.7735150+07:00 0HM6RRHN9TN8M:00000003 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32), @__p_5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_5 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:46:31.7745310+07:00 0HM6RRHN9TN8M:00000003 [WRN] Testing Logger (625a9051)
+2021-02-28T18:46:31.7793160+07:00 0HM6RRHN9TN8M:00000003 [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:46:31.7858400+07:00 0HM6RRHN9TN8M:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:46:31.7922410+07:00 0HM6RRHN9TN8M:00000003 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:46:31.7926990+07:00 0HM6RRHN9TN8M:00000003 [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 34.6383ms (afa2e885)
+2021-02-28T18:46:31.7927420+07:00 0HM6RRHN9TN8M:00000003 [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:46:31.7928850+07:00 0HM6RRHN9TN8M:00000003 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 35.7564ms (791a596a)
+2021-02-28T18:48:11.8248330+07:00 0HM6RRHN9TN8M:00000004 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:48:11.8251870+07:00 0HM6RRHN9TN8M:00000004 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:11.8255010+07:00 0HM6RRHN9TN8M:00000004 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 204 - - 0.7222ms (791a596a)
+2021-02-28T18:48:11.8270750+07:00 0HM6RRHN9TN8M:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:48:11.8272060+07:00 0HM6RRHN9TN8M:00000005 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:11.8280080+07:00 0HM6RRHN9TN8M:00000005 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:48:11.8282150+07:00 0HM6RRHN9TN8M:00000005 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:48:11.8282600+07:00 0HM6RRHN9TN8M:00000005 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:48:11.8290780+07:00 0HM6RRHN9TN8M:00000005 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:48:11.8304460+07:00 0HM6RRHN9TN8M:00000005 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:48:11.8395880+07:00 0HM6RRHN9TN8M:00000005 [INF] Executed DbCommand ("8"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:48:11.8453520+07:00 0HM6RRHN9TN8M:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:48:11.8556100+07:00 0HM6RRHN9TN8M:00000005 [INF] Executed DbCommand ("9"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:48:11.8673350+07:00 0HM6RRHN9TN8M:00000005 [INF] Executed DbCommand ("6"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:48:11.8758680+07:00 0HM6RRHN9TN8M:00000005 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:48:11.8761060+07:00 0HM6RRHN9TN8M:00000005 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 46.9337ms (afa2e885)
+2021-02-28T18:48:11.8761400+07:00 0HM6RRHN9TN8M:00000005 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:48:11.8762520+07:00 0HM6RRHN9TN8M:00000005 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 49.1826ms (791a596a)
+2021-02-28T18:48:11.8783970+07:00 0HM6RRHN9TN8M:00000006 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:48:11.8785160+07:00 0HM6RRHN9TN8M:00000006 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:11.8786970+07:00 0HM6RRHN9TN8M:00000006 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 0.3077ms (791a596a)
+2021-02-28T18:48:11.8821360+07:00 0HM6RRHN9TN8M:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:48:11.8822530+07:00 0HM6RRHN9TN8M:00000007 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:11.8825760+07:00 0HM6RRHN9TN8M:00000007 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:48:11.8826900+07:00 0HM6RRHN9TN8M:00000007 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:48:11.8827390+07:00 0HM6RRHN9TN8M:00000007 [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:48:11.8828540+07:00 0HM6RRHN9TN8M:00000007 [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:48:11.8837490+07:00 0HM6RRHN9TN8M:00000007 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:48:11.8879380+07:00 0HM6RRHN9TN8M:00000007 [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:48:11.8922770+07:00 0HM6RRHN9TN8M:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:48:11.8962590+07:00 0HM6RRHN9TN8M:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32), @__p_5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_5 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:48:11.8969550+07:00 0HM6RRHN9TN8M:00000007 [WRN] Testing Logger (625a9051)
+2021-02-28T18:48:11.9008420+07:00 0HM6RRHN9TN8M:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:48:11.9089450+07:00 0HM6RRHN9TN8M:00000007 [INF] Executed DbCommand ("5"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:48:11.9130120+07:00 0HM6RRHN9TN8M:00000007 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:48:11.9133280+07:00 0HM6RRHN9TN8M:00000007 [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 30.4256ms (afa2e885)
+2021-02-28T18:48:11.9134460+07:00 0HM6RRHN9TN8M:00000007 [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:48:11.9135720+07:00 0HM6RRHN9TN8M:00000007 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 31.4762ms (791a596a)
+2021-02-28T18:48:55.0258370+07:00 0HM6RRHN9TN8M:00000008 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:48:55.0260630+07:00 0HM6RRHN9TN8M:00000008 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:55.0262790+07:00 0HM6RRHN9TN8M:00000008 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 204 - - 0.4436ms (791a596a)
+2021-02-28T18:48:55.0296230+07:00 0HM6RRHN9TN8M:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:48:55.0298580+07:00 0HM6RRHN9TN8M:00000009 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:55.0302690+07:00 0HM6RRHN9TN8M:00000009 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:48:55.0304460+07:00 0HM6RRHN9TN8M:00000009 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:48:55.0305330+07:00 0HM6RRHN9TN8M:00000009 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:48:55.0307140+07:00 0HM6RRHN9TN8M:00000009 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:48:55.0323520+07:00 0HM6RRHN9TN8M:00000009 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:48:55.0364910+07:00 0HM6RRHN9TN8M:00000009 [INF] Executed DbCommand ("3"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:48:55.0404640+07:00 0HM6RRHN9TN8M:00000009 [INF] Executed DbCommand ("3"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:48:55.0450400+07:00 0HM6RRHN9TN8M:00000009 [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:48:55.0522210+07:00 0HM6RRHN9TN8M:00000009 [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:48:55.0573000+07:00 0HM6RRHN9TN8M:00000009 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:48:55.0574780+07:00 0HM6RRHN9TN8M:00000009 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 26.7133ms (afa2e885)
+2021-02-28T18:48:55.0575080+07:00 0HM6RRHN9TN8M:00000009 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:48:55.0577120+07:00 0HM6RRHN9TN8M:00000009 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 28.1030ms (791a596a)
+2021-02-28T18:48:55.0613470+07:00 0HM6RRHN9TN8M:0000000A [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:48:55.0614340+07:00 0HM6RRHN9TN8M:0000000A [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:55.0616230+07:00 0HM6RRHN9TN8M:0000000A [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 0.2282ms (791a596a)
+2021-02-28T18:48:55.0648170+07:00 0HM6RRHN9TN8M:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:48:55.0649110+07:00 0HM6RRHN9TN8M:0000000B [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:48:55.0651930+07:00 0HM6RRHN9TN8M:0000000B [INF] Successfully validated the token. (60169667)
+2021-02-28T18:48:55.0653040+07:00 0HM6RRHN9TN8M:0000000B [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:48:55.0653330+07:00 0HM6RRHN9TN8M:0000000B [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:48:55.0654850+07:00 0HM6RRHN9TN8M:0000000B [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:48:55.0662530+07:00 0HM6RRHN9TN8M:0000000B [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:48:55.0713330+07:00 0HM6RRHN9TN8M:0000000B [INF] Executed DbCommand ("5"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:48:55.0752360+07:00 0HM6RRHN9TN8M:0000000B [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:48:55.0793460+07:00 0HM6RRHN9TN8M:0000000B [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32), @__p_5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_5 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:48:55.0799120+07:00 0HM6RRHN9TN8M:0000000B [WRN] Testing Logger (625a9051)
+2021-02-28T18:48:55.0840170+07:00 0HM6RRHN9TN8M:0000000B [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:48:55.0905170+07:00 0HM6RRHN9TN8M:0000000B [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:48:55.0959220+07:00 0HM6RRHN9TN8M:0000000B [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:48:55.0962880+07:00 0HM6RRHN9TN8M:0000000B [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 30.747ms (afa2e885)
+2021-02-28T18:48:55.0963300+07:00 0HM6RRHN9TN8M:0000000B [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:48:55.0964470+07:00 0HM6RRHN9TN8M:0000000B [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 31.6256ms (791a596a)
+2021-02-28T18:49:21.0543360+07:00 0HM6RRHN9TN8M:0000000C [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:49:21.0545350+07:00 0HM6RRHN9TN8M:0000000C [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:21.0550560+07:00 0HM6RRHN9TN8M:0000000C [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 0.6039ms (791a596a)
+2021-02-28T18:49:21.0562060+07:00 0HM6RRHN9TN8M:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:49:21.0564130+07:00 0HM6RRHN9TN8M:0000000D [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:21.0574910+07:00 0HM6RRHN9TN8M:0000000D [INF] Successfully validated the token. (60169667)
+2021-02-28T18:49:21.0578210+07:00 0HM6RRHN9TN8M:0000000D [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:49:21.0578790+07:00 0HM6RRHN9TN8M:0000000D [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:49:21.0581620+07:00 0HM6RRHN9TN8M:0000000D [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:49:21.0596150+07:00 0HM6RRHN9TN8M:0000000D [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:49:21.0634110+07:00 0HM6RRHN9TN8M:0000000D [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:49:21.0668290+07:00 0HM6RRHN9TN8M:0000000D [INF] Executed DbCommand ("2"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:49:21.0702970+07:00 0HM6RRHN9TN8M:0000000D [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32), @__p_5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_5 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:49:21.0711500+07:00 0HM6RRHN9TN8M:0000000D [WRN] Testing Logger (625a9051)
+2021-02-28T18:49:21.0744880+07:00 0HM6RRHN9TN8M:0000000D [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:49:21.0808610+07:00 0HM6RRHN9TN8M:0000000D [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:49:21.0872120+07:00 0HM6RRHN9TN8M:0000000D [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:49:21.0880740+07:00 0HM6RRHN9TN8M:0000000D [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 29.7815ms (afa2e885)
+2021-02-28T18:49:21.0882000+07:00 0HM6RRHN9TN8M:0000000D [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:49:21.0885600+07:00 0HM6RRHN9TN8M:0000000D [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 32.2801ms (791a596a)
+2021-02-28T18:49:22.1161990+07:00 0HM6RRHN9TN8M:0000000E [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:49:22.1163190+07:00 0HM6RRHN9TN8M:0000000E [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:22.1165580+07:00 0HM6RRHN9TN8M:0000000E [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 204 - - 0.3726ms (791a596a)
+2021-02-28T18:49:22.1179080+07:00 0HM6RRHN9TN8M:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:49:22.1180100+07:00 0HM6RRHN9TN8M:0000000F [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:22.1182530+07:00 0HM6RRHN9TN8M:0000000F [INF] Successfully validated the token. (60169667)
+2021-02-28T18:49:22.1184040+07:00 0HM6RRHN9TN8M:0000000F [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:49:22.1184360+07:00 0HM6RRHN9TN8M:0000000F [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:49:22.1185330+07:00 0HM6RRHN9TN8M:0000000F [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:49:22.1191250+07:00 0HM6RRHN9TN8M:0000000F [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:49:22.1231420+07:00 0HM6RRHN9TN8M:0000000F [INF] Executed DbCommand ("3"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:49:22.1295570+07:00 0HM6RRHN9TN8M:0000000F [INF] Executed DbCommand ("6"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:49:22.1334680+07:00 0HM6RRHN9TN8M:0000000F [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:49:22.1386000+07:00 0HM6RRHN9TN8M:0000000F [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:49:22.1427070+07:00 0HM6RRHN9TN8M:0000000F [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:49:22.1429140+07:00 0HM6RRHN9TN8M:0000000F [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 24.3419ms (afa2e885)
+2021-02-28T18:49:22.1429440+07:00 0HM6RRHN9TN8M:0000000F [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:49:22.1431380+07:00 0HM6RRHN9TN8M:0000000F [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 25.1751ms (791a596a)
+2021-02-28T18:49:30.6216860+07:00 0HM6RRHN9TN8M:00000010 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/account/login - - (ca22a1cb)
+2021-02-28T18:49:30.6222250+07:00 0HM6RRHN9TN8M:00000010 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:30.6224080+07:00 0HM6RRHN9TN8M:00000010 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/account/login - - - 204 - - 0.7047ms (791a596a)
+2021-02-28T18:49:30.6259330+07:00 0HM6RRHN9TN8M:00000011 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/account/login application/json 44 (ca22a1cb)
+2021-02-28T18:49:30.6274060+07:00 0HM6RRHN9TN8M:00000011 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:30.6276830+07:00 0HM6RRHN9TN8M:00000011 [INF] Executing endpoint '"API.Controllers.AccountController.Login (API)"' (500cc934)
+2021-02-28T18:49:30.6332810+07:00 0HM6RRHN9TN8M:00000011 [INF] Route matched with "{action = \"Login\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.DTOs.UserDto]] Login(API.DTOs.LoginDto)" on controller "API.Controllers.AccountController" ("API"). (122b2fdf)
+2021-02-28T18:49:30.6456450+07:00 0HM6RRHN9TN8M:00000011 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:49:30.6605400+07:00 0HM6RRHN9TN8M:00000011 [INF] Executed DbCommand ("4"ms) [Parameters=["@__loginDto_Username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__loginDto_Username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:49:30.6785810+07:00 0HM6RRHN9TN8M:00000011 [INF] Executing "ObjectResult", writing value of type '"API.DTOs.UserDto"'. (605b4265)
+2021-02-28T18:49:30.6807090+07:00 0HM6RRHN9TN8M:00000011 [INF] Executed action "API.Controllers.AccountController.Login (API)" in 47.3543ms (afa2e885)
+2021-02-28T18:49:30.6807600+07:00 0HM6RRHN9TN8M:00000011 [INF] Executed endpoint '"API.Controllers.AccountController.Login (API)"' (99874f2b)
+2021-02-28T18:49:30.6808680+07:00 0HM6RRHN9TN8M:00000011 [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/account/login application/json 44 - 200 - application/json;+charset=utf-8 54.9734ms (791a596a)
+2021-02-28T18:49:31.7160900+07:00 0HM6RRHN9TN8M:00000012 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:49:31.7162450+07:00 0HM6RRHN9TN8M:00000012 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:31.7164400+07:00 0HM6RRHN9TN8M:00000012 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 0.3344ms (791a596a)
+2021-02-28T18:49:31.7181090+07:00 0HM6RRHN9TN8M:00000013 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:49:31.7182060+07:00 0HM6RRHN9TN8M:00000013 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:49:31.7184590+07:00 0HM6RRHN9TN8M:00000013 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:49:31.7186580+07:00 0HM6RRHN9TN8M:00000013 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:49:31.7187300+07:00 0HM6RRHN9TN8M:00000013 [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:49:31.7188530+07:00 0HM6RRHN9TN8M:00000013 [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:49:31.7195500+07:00 0HM6RRHN9TN8M:00000013 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:49:31.7236360+07:00 0HM6RRHN9TN8M:00000013 [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:49:31.7277050+07:00 0HM6RRHN9TN8M:00000013 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:49:31.7313360+07:00 0HM6RRHN9TN8M:00000013 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32), @__p_5='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_5 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:49:31.7317930+07:00 0HM6RRHN9TN8M:00000013 [WRN] Testing Logger (625a9051)
+2021-02-28T18:49:31.7350800+07:00 0HM6RRHN9TN8M:00000013 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:49:31.7413740+07:00 0HM6RRHN9TN8M:00000013 [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:49:31.7470120+07:00 0HM6RRHN9TN8M:00000013 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:49:31.7472550+07:00 0HM6RRHN9TN8M:00000013 [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 28.35ms (afa2e885)
+2021-02-28T18:49:31.7472960+07:00 0HM6RRHN9TN8M:00000013 [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:49:31.7474500+07:00 0HM6RRHN9TN8M:00000013 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 29.3207ms (791a596a)
+2021-02-28T18:50:12.5841600+07:00 0HM6RRHN9TN8M:00000014 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=2&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:50:12.5842470+07:00 0HM6RRHN9TN8M:00000014 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:12.5843700+07:00 0HM6RRHN9TN8M:00000014 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/users?pageNumber=2&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 204 - - 0.1965ms (791a596a)
+2021-02-28T18:50:12.5857560+07:00 0HM6RRHN9TN8M:00000015 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=2&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - (ca22a1cb)
+2021-02-28T18:50:12.5858540+07:00 0HM6RRHN9TN8M:00000015 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:12.5860740+07:00 0HM6RRHN9TN8M:00000015 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:12.5861810+07:00 0HM6RRHN9TN8M:00000015 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:12.5862220+07:00 0HM6RRHN9TN8M:00000015 [INF] Executing endpoint '"API.Controllers.UsersController.GetUsers (API)"' (500cc934)
+2021-02-28T18:50:12.5862970+07:00 0HM6RRHN9TN8M:00000015 [INF] Route matched with "{action = \"GetUsers\", controller = \"Users\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.MemberDto]]] GetUsers(API.Helpers.UserParams)" on controller "API.Controllers.UsersController" ("API"). (122b2fdf)
+2021-02-28T18:50:12.5868470+07:00 0HM6RRHN9TN8M:00000015 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:12.5901080+07:00 0HM6RRHN9TN8M:00000015 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:12.5931570+07:00 0HM6RRHN9TN8M:00000015 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)" (0723d8ff)
+2021-02-28T18:50:12.6279010+07:00 0HM6RRHN9TN8M:00000015 [INF] Executed DbCommand ("7"ms) [Parameters=["@__userParams_CurrentUsername_0='?' (Size = 4000), @__userParams_Gender_1='?' (Size = 4000), @__minDob_2='?' (DbType = DateTime2), @__maxDob_3='?' (DbType = DateTime2), @__p_4='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Username], [t].[c], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [p0].[Id], [p0].[AppUserId], [p0].[IsMain], [p0].[PublicId], [p0].[Url], [p1].[Id], [p1].[Url], [p1].[IsMain]
+FROM (
+    SELECT [u].[Id], [u].[Username], (
+        SELECT TOP(1) [p].[Url]
+        FROM [Photos] AS [p]
+        WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit))) AS [c], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt]
+    FROM [Users] AS [u]
+    WHERE (((([u].[Username] <> @__userParams_CurrentUsername_0) OR [u].[Username] IS NULL) AND ([u].[Gender] = @__userParams_Gender_1)) AND ([u].[DateOfBirth] >= @__minDob_2)) AND ([u].[DateOfBirth] <= @__maxDob_3)
+    ORDER BY [u].[LastActive] DESC
+    OFFSET @__p_4 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t]
+LEFT JOIN [Photos] AS [p0] ON [t].[Id] = [p0].[AppUserId]
+LEFT JOIN [Photos] AS [p1] ON [t].[Id] = [p1].[AppUserId]
+ORDER BY [t].[LastActive] DESC, [t].[Id], [p0].[Id], [p1].[Id]" (0723d8ff)
+2021-02-28T18:50:12.6281170+07:00 0HM6RRHN9TN8M:00000015 [WRN] Testing Logger (625a9051)
+2021-02-28T18:50:12.6312300+07:00 0HM6RRHN9TN8M:00000015 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:12.6356930+07:00 0HM6RRHN9TN8M:00000015 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:12.6391040+07:00 0HM6RRHN9TN8M:00000015 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.MemberDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:50:12.6392440+07:00 0HM6RRHN9TN8M:00000015 [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 52.927ms (afa2e885)
+2021-02-28T18:50:12.6392660+07:00 0HM6RRHN9TN8M:00000015 [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
+2021-02-28T18:50:12.6393360+07:00 0HM6RRHN9TN8M:00000015 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=2&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 53.5789ms (791a596a)
+2021-02-28T18:50:14.2671350+07:00 0HM6RRHN9TN8M:00000016 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:50:14.2672390+07:00 0HM6RRHN9TN8M:00000016 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:14.2673620+07:00 0HM6RRHN9TN8M:00000016 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 204 - - 0.2350ms (791a596a)
+2021-02-28T18:50:14.2692780+07:00 0HM6RRHN9TN8M:00000017 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:50:14.2693960+07:00 0HM6RRHN9TN8M:00000017 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:14.2696250+07:00 0HM6RRHN9TN8M:00000017 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:14.2697320+07:00 0HM6RRHN9TN8M:00000017 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:14.2697640+07:00 0HM6RRHN9TN8M:00000017 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:50:14.2698570+07:00 0HM6RRHN9TN8M:00000017 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:14.2704470+07:00 0HM6RRHN9TN8M:00000017 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:14.2735360+07:00 0HM6RRHN9TN8M:00000017 [INF] Executed DbCommand ("2"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:50:14.2771070+07:00 0HM6RRHN9TN8M:00000017 [INF] Executed DbCommand ("3"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:50:14.2805210+07:00 0HM6RRHN9TN8M:00000017 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:14.2864270+07:00 0HM6RRHN9TN8M:00000017 [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:14.2918280+07:00 0HM6RRHN9TN8M:00000017 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:50:14.2919790+07:00 0HM6RRHN9TN8M:00000017 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 22.0961ms (afa2e885)
+2021-02-28T18:50:14.2920030+07:00 0HM6RRHN9TN8M:00000017 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:50:14.2921040+07:00 0HM6RRHN9TN8M:00000017 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 22.8271ms (791a596a)
+2021-02-28T18:50:16.6721860+07:00 0HM6RRHN9TN8M:00000018 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=likedBy - - (ca22a1cb)
+2021-02-28T18:50:16.6722930+07:00 0HM6RRHN9TN8M:00000018 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:16.6724220+07:00 0HM6RRHN9TN8M:00000018 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=likedBy - - - 204 - - 0.2494ms (791a596a)
+2021-02-28T18:50:16.6746080+07:00 0HM6RRHN9TN8M:00000019 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=likedBy - - (ca22a1cb)
+2021-02-28T18:50:16.6747150+07:00 0HM6RRHN9TN8M:00000019 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:16.6750160+07:00 0HM6RRHN9TN8M:00000019 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:16.6751380+07:00 0HM6RRHN9TN8M:00000019 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:16.6751810+07:00 0HM6RRHN9TN8M:00000019 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:50:16.6753060+07:00 0HM6RRHN9TN8M:00000019 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:16.6761130+07:00 0HM6RRHN9TN8M:00000019 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:16.6893510+07:00 0HM6RRHN9TN8M:00000019 [INF] Executed DbCommand ("7"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[SourceUserId] = [u].[Id]
+WHERE [l].[LikedUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:50:16.7059200+07:00 0HM6RRHN9TN8M:00000019 [INF] Executed DbCommand ("10"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[SourceUserId] = [u].[Id]
+WHERE [l].[LikedUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:50:16.7087680+07:00 0HM6RRHN9TN8M:00000019 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:16.7128050+07:00 0HM6RRHN9TN8M:00000019 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:16.7159070+07:00 0HM6RRHN9TN8M:00000019 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:50:16.7163790+07:00 0HM6RRHN9TN8M:00000019 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 40.9881ms (afa2e885)
+2021-02-28T18:50:16.7165210+07:00 0HM6RRHN9TN8M:00000019 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:50:16.7168210+07:00 0HM6RRHN9TN8M:00000019 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=likedBy - - - 200 - application/json;+charset=utf-8 42.1619ms (791a596a)
+2021-02-28T18:50:30.3771840+07:00 0HM6RRHN9TN8M:0000001A [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes/tia - - (ca22a1cb)
+2021-02-28T18:50:30.3783030+07:00 0HM6RRHN9TN8M:0000001A [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:30.3784970+07:00 0HM6RRHN9TN8M:0000001A [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes/tia - - - 204 - - 1.3305ms (791a596a)
+2021-02-28T18:50:30.3797780+07:00 0HM6RRHN9TN8M:0000001B [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/likes/tia application/json 2 (ca22a1cb)
+2021-02-28T18:50:30.3799210+07:00 0HM6RRHN9TN8M:0000001B [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:30.3801190+07:00 0HM6RRHN9TN8M:0000001B [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:30.3803500+07:00 0HM6RRHN9TN8M:0000001B [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:30.3803980+07:00 0HM6RRHN9TN8M:0000001B [INF] Executing endpoint '"API.Controllers.LikesController.AddLike (API)"' (500cc934)
+2021-02-28T18:50:30.3844770+07:00 0HM6RRHN9TN8M:0000001B [INF] Route matched with "{action = \"AddLike\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddLike(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:30.3870550+07:00 0HM6RRHN9TN8M:0000001B [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:30.3900320+07:00 0HM6RRHN9TN8M:0000001B [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:30.4052710+07:00 0HM6RRHN9TN8M:0000001B [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [l].[SourceUserId], [l].[LikedUserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN [Likes] AS [l] ON [t].[Id] = [l].[SourceUserId]
+ORDER BY [t].[Id], [l].[SourceUserId], [l].[LikedUserId]" (0723d8ff)
+2021-02-28T18:50:30.4281250+07:00 0HM6RRHN9TN8M:0000001B [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:30.4325610+07:00 0HM6RRHN9TN8M:0000001B [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:30.4359640+07:00 0HM6RRHN9TN8M:0000001B [INF] Executing "BadRequestObjectResult", writing value of type '"System.String"'. (605b4265)
+2021-02-28T18:50:30.4368890+07:00 0HM6RRHN9TN8M:0000001B [INF] Executed action "API.Controllers.LikesController.AddLike (API)" in 52.3079ms (afa2e885)
+2021-02-28T18:50:30.4369890+07:00 0HM6RRHN9TN8M:0000001B [INF] Executed endpoint '"API.Controllers.LikesController.AddLike (API)"' (99874f2b)
+2021-02-28T18:50:30.4371410+07:00 0HM6RRHN9TN8M:0000001B [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/likes/tia application/json 2 - 400 - text/plain;+charset=utf-8 57.3577ms (791a596a)
+2021-02-28T18:50:31.4800360+07:00 0HM6RRHN9TN8M:0000001C [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes/addie - - (ca22a1cb)
+2021-02-28T18:50:31.4801940+07:00 0HM6RRHN9TN8M:0000001C [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:31.4803180+07:00 0HM6RRHN9TN8M:0000001C [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes/addie - - - 204 - - 0.2809ms (791a596a)
+2021-02-28T18:50:31.4817740+07:00 0HM6RRHN9TN8M:0000001D [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/likes/addie application/json 2 (ca22a1cb)
+2021-02-28T18:50:31.4818880+07:00 0HM6RRHN9TN8M:0000001D [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:31.4821870+07:00 0HM6RRHN9TN8M:0000001D [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:31.4822840+07:00 0HM6RRHN9TN8M:0000001D [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:31.4823380+07:00 0HM6RRHN9TN8M:0000001D [INF] Executing endpoint '"API.Controllers.LikesController.AddLike (API)"' (500cc934)
+2021-02-28T18:50:31.4824230+07:00 0HM6RRHN9TN8M:0000001D [INF] Route matched with "{action = \"AddLike\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddLike(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:31.4829020+07:00 0HM6RRHN9TN8M:0000001D [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:31.4871700+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:31.4920040+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [l].[SourceUserId], [l].[LikedUserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN [Likes] AS [l] ON [t].[Id] = [l].[SourceUserId]
+ORDER BY [t].[Id], [l].[SourceUserId], [l].[LikedUserId]" (0723d8ff)
+2021-02-28T18:50:31.5046220+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [l].[SourceUserId], [l].[LikedUserId]
+FROM [Likes] AS [l]
+WHERE ([l].[SourceUserId] = @__p_0) AND ([l].[LikedUserId] = @__p_1)" (0723d8ff)
+2021-02-28T18:50:31.5318640+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed DbCommand ("3"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Likes] ([LikedUserId], [SourceUserId])
+VALUES (@p0, @p1);" (0723d8ff)
+2021-02-28T18:50:31.5376440+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:31.5424770+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:31.5501060+07:00 0HM6RRHN9TN8M:0000001D [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2021-02-28T18:50:31.5502040+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed action "API.Controllers.LikesController.AddLike (API)" in 67.7304ms (afa2e885)
+2021-02-28T18:50:31.5502230+07:00 0HM6RRHN9TN8M:0000001D [INF] Executed endpoint '"API.Controllers.LikesController.AddLike (API)"' (99874f2b)
+2021-02-28T18:50:31.5503790+07:00 0HM6RRHN9TN8M:0000001D [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/likes/addie application/json 2 - 200 0 - 68.5857ms (791a596a)
+2021-02-28T18:50:34.0449180+07:00 0HM6RRHN9TN8M:0000001E [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes/ida - - (ca22a1cb)
+2021-02-28T18:50:34.0450580+07:00 0HM6RRHN9TN8M:0000001E [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:34.0451730+07:00 0HM6RRHN9TN8M:0000001E [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes/ida - - - 204 - - 0.2644ms (791a596a)
+2021-02-28T18:50:34.0467610+07:00 0HM6RRHN9TN8M:0000001F [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/likes/ida application/json 2 (ca22a1cb)
+2021-02-28T18:50:34.0469590+07:00 0HM6RRHN9TN8M:0000001F [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:34.0472710+07:00 0HM6RRHN9TN8M:0000001F [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:34.0473500+07:00 0HM6RRHN9TN8M:0000001F [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:34.0474420+07:00 0HM6RRHN9TN8M:0000001F [INF] Executing endpoint '"API.Controllers.LikesController.AddLike (API)"' (500cc934)
+2021-02-28T18:50:34.0475820+07:00 0HM6RRHN9TN8M:0000001F [INF] Route matched with "{action = \"AddLike\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddLike(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:34.0481950+07:00 0HM6RRHN9TN8M:0000001F [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:34.0518800+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:34.0549320+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [l].[SourceUserId], [l].[LikedUserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN [Likes] AS [l] ON [t].[Id] = [l].[SourceUserId]
+ORDER BY [t].[Id], [l].[SourceUserId], [l].[LikedUserId]" (0723d8ff)
+2021-02-28T18:50:34.0595440+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [l].[SourceUserId], [l].[LikedUserId]
+FROM [Likes] AS [l]
+WHERE ([l].[SourceUserId] = @__p_0) AND ([l].[LikedUserId] = @__p_1)" (0723d8ff)
+2021-02-28T18:50:34.0652220+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed DbCommand ("3"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Likes] ([LikedUserId], [SourceUserId])
+VALUES (@p0, @p1);" (0723d8ff)
+2021-02-28T18:50:34.0735270+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:34.0787720+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:34.0816420+07:00 0HM6RRHN9TN8M:0000001F [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2021-02-28T18:50:34.0817190+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed action "API.Controllers.LikesController.AddLike (API)" in 34.0821ms (afa2e885)
+2021-02-28T18:50:34.0817540+07:00 0HM6RRHN9TN8M:0000001F [INF] Executed endpoint '"API.Controllers.LikesController.AddLike (API)"' (99874f2b)
+2021-02-28T18:50:34.0818810+07:00 0HM6RRHN9TN8M:0000001F [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/likes/ida application/json 2 - 200 0 - 35.1359ms (791a596a)
+2021-02-28T18:50:36.1122860+07:00 0HM6RRHN9TN8M:00000020 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes/darcy - - (ca22a1cb)
+2021-02-28T18:50:36.1123870+07:00 0HM6RRHN9TN8M:00000020 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:36.1125120+07:00 0HM6RRHN9TN8M:00000020 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes/darcy - - - 204 - - 0.2308ms (791a596a)
+2021-02-28T18:50:36.1140360+07:00 0HM6RRHN9TN8M:00000021 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/likes/darcy application/json 2 (ca22a1cb)
+2021-02-28T18:50:36.1141200+07:00 0HM6RRHN9TN8M:00000021 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:36.1143060+07:00 0HM6RRHN9TN8M:00000021 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:36.1143930+07:00 0HM6RRHN9TN8M:00000021 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:36.1144200+07:00 0HM6RRHN9TN8M:00000021 [INF] Executing endpoint '"API.Controllers.LikesController.AddLike (API)"' (500cc934)
+2021-02-28T18:50:36.1145050+07:00 0HM6RRHN9TN8M:00000021 [INF] Route matched with "{action = \"AddLike\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddLike(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:36.1149390+07:00 0HM6RRHN9TN8M:00000021 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:36.1192120+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed DbCommand ("4"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:36.1230880+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [l].[SourceUserId], [l].[LikedUserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN [Likes] AS [l] ON [t].[Id] = [l].[SourceUserId]
+ORDER BY [t].[Id], [l].[SourceUserId], [l].[LikedUserId]" (0723d8ff)
+2021-02-28T18:50:36.1279350+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [l].[SourceUserId], [l].[LikedUserId]
+FROM [Likes] AS [l]
+WHERE ([l].[SourceUserId] = @__p_0) AND ([l].[LikedUserId] = @__p_1)" (0723d8ff)
+2021-02-28T18:50:36.1340240+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed DbCommand ("3"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Likes] ([LikedUserId], [SourceUserId])
+VALUES (@p0, @p1);" (0723d8ff)
+2021-02-28T18:50:36.1423830+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:36.1473500+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:36.1500240+07:00 0HM6RRHN9TN8M:00000021 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2021-02-28T18:50:36.1500610+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed action "API.Controllers.LikesController.AddLike (API)" in 35.5356ms (afa2e885)
+2021-02-28T18:50:36.1500760+07:00 0HM6RRHN9TN8M:00000021 [INF] Executed endpoint '"API.Controllers.LikesController.AddLike (API)"' (99874f2b)
+2021-02-28T18:50:36.1501620+07:00 0HM6RRHN9TN8M:00000021 [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/likes/darcy application/json 2 - 200 0 - 36.1399ms (791a596a)
+2021-02-28T18:50:39.3332480+07:00 0HM6RRHN9TN8M:00000022 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes/joan - - (ca22a1cb)
+2021-02-28T18:50:39.3333260+07:00 0HM6RRHN9TN8M:00000022 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:39.3334070+07:00 0HM6RRHN9TN8M:00000022 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes/joan - - - 204 - - 0.1701ms (791a596a)
+2021-02-28T18:50:39.3345070+07:00 0HM6RRHN9TN8M:00000023 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/likes/joan application/json 2 (ca22a1cb)
+2021-02-28T18:50:39.3345700+07:00 0HM6RRHN9TN8M:00000023 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:39.3347840+07:00 0HM6RRHN9TN8M:00000023 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:39.3348560+07:00 0HM6RRHN9TN8M:00000023 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:39.3349030+07:00 0HM6RRHN9TN8M:00000023 [INF] Executing endpoint '"API.Controllers.LikesController.AddLike (API)"' (500cc934)
+2021-02-28T18:50:39.3350070+07:00 0HM6RRHN9TN8M:00000023 [INF] Route matched with "{action = \"AddLike\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddLike(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:39.3355430+07:00 0HM6RRHN9TN8M:00000023 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:39.3394380+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:39.3427440+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [l].[SourceUserId], [l].[LikedUserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN [Likes] AS [l] ON [t].[Id] = [l].[SourceUserId]
+ORDER BY [t].[Id], [l].[SourceUserId], [l].[LikedUserId]" (0723d8ff)
+2021-02-28T18:50:39.3458130+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [l].[SourceUserId], [l].[LikedUserId]
+FROM [Likes] AS [l]
+WHERE ([l].[SourceUserId] = @__p_0) AND ([l].[LikedUserId] = @__p_1)" (0723d8ff)
+2021-02-28T18:50:39.3495630+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Likes] ([LikedUserId], [SourceUserId])
+VALUES (@p0, @p1);" (0723d8ff)
+2021-02-28T18:50:39.3556900+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:39.3599110+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:39.3635800+07:00 0HM6RRHN9TN8M:00000023 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2021-02-28T18:50:39.3636210+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed action "API.Controllers.LikesController.AddLike (API)" in 28.5877ms (afa2e885)
+2021-02-28T18:50:39.3636390+07:00 0HM6RRHN9TN8M:00000023 [INF] Executed endpoint '"API.Controllers.LikesController.AddLike (API)"' (99874f2b)
+2021-02-28T18:50:39.3637530+07:00 0HM6RRHN9TN8M:00000023 [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/likes/joan application/json 2 - 200 0 - 29.2449ms (791a596a)
+2021-02-28T18:50:41.2839000+07:00 0HM6RRHN9TN8M:00000024 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:50:41.2839800+07:00 0HM6RRHN9TN8M:00000024 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:41.2840910+07:00 0HM6RRHN9TN8M:00000024 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 204 - - 0.1743ms (791a596a)
+2021-02-28T18:50:41.2852960+07:00 0HM6RRHN9TN8M:00000025 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:50:41.2853790+07:00 0HM6RRHN9TN8M:00000025 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:41.2856190+07:00 0HM6RRHN9TN8M:00000025 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:41.2857310+07:00 0HM6RRHN9TN8M:00000025 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:41.2857690+07:00 0HM6RRHN9TN8M:00000025 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:50:41.2858930+07:00 0HM6RRHN9TN8M:00000025 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:41.2864600+07:00 0HM6RRHN9TN8M:00000025 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:41.2902160+07:00 0HM6RRHN9TN8M:00000025 [INF] Executed DbCommand ("3"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:50:41.2943100+07:00 0HM6RRHN9TN8M:00000025 [INF] Executed DbCommand ("4"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:50:41.2972860+07:00 0HM6RRHN9TN8M:00000025 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:41.3046600+07:00 0HM6RRHN9TN8M:00000025 [INF] Executed DbCommand ("4"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:41.3101740+07:00 0HM6RRHN9TN8M:00000025 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:50:41.3103670+07:00 0HM6RRHN9TN8M:00000025 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 24.4443ms (afa2e885)
+2021-02-28T18:50:41.3104110+07:00 0HM6RRHN9TN8M:00000025 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:50:41.3105150+07:00 0HM6RRHN9TN8M:00000025 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 25.2222ms (791a596a)
+2021-02-28T18:50:43.5636860+07:00 0HM6RRHN9TN8M:00000026 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=2&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:50:43.5638590+07:00 0HM6RRHN9TN8M:00000026 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:43.5640000+07:00 0HM6RRHN9TN8M:00000026 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=2&pageSize=4&predicate=liked - - - 204 - - 0.3184ms (791a596a)
+2021-02-28T18:50:43.5665500+07:00 0HM6RRHN9TN8M:00000027 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=2&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:50:43.5667040+07:00 0HM6RRHN9TN8M:00000027 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:43.5669320+07:00 0HM6RRHN9TN8M:00000027 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:43.5670220+07:00 0HM6RRHN9TN8M:00000027 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:43.5670520+07:00 0HM6RRHN9TN8M:00000027 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:50:43.5671750+07:00 0HM6RRHN9TN8M:00000027 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:43.5678940+07:00 0HM6RRHN9TN8M:00000027 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:43.5735000+07:00 0HM6RRHN9TN8M:00000027 [INF] Executed DbCommand ("5"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:50:43.5932530+07:00 0HM6RRHN9TN8M:00000027 [INF] Executed DbCommand ("12"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2021-02-28T18:50:43.5967180+07:00 0HM6RRHN9TN8M:00000027 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:43.6024140+07:00 0HM6RRHN9TN8M:00000027 [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:43.6056030+07:00 0HM6RRHN9TN8M:00000027 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:50:43.6057290+07:00 0HM6RRHN9TN8M:00000027 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 38.527ms (afa2e885)
+2021-02-28T18:50:43.6057480+07:00 0HM6RRHN9TN8M:00000027 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:50:43.6058180+07:00 0HM6RRHN9TN8M:00000027 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=2&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 39.3082ms (791a596a)
+2021-02-28T18:50:45.6251840+07:00 0HM6RRHN9TN8M:00000028 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:50:45.6253110+07:00 0HM6RRHN9TN8M:00000028 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:50:45.6256010+07:00 0HM6RRHN9TN8M:00000028 [INF] Successfully validated the token. (60169667)
+2021-02-28T18:50:45.6257200+07:00 0HM6RRHN9TN8M:00000028 [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:50:45.6257500+07:00 0HM6RRHN9TN8M:00000028 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:50:45.6258790+07:00 0HM6RRHN9TN8M:00000028 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:50:45.6263830+07:00 0HM6RRHN9TN8M:00000028 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:50:45.6311380+07:00 0HM6RRHN9TN8M:00000028 [INF] Executed DbCommand ("4"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:50:45.6353990+07:00 0HM6RRHN9TN8M:00000028 [INF] Executed DbCommand ("4"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:50:45.6390420+07:00 0HM6RRHN9TN8M:00000028 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:50:45.6448980+07:00 0HM6RRHN9TN8M:00000028 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:50:45.6492130+07:00 0HM6RRHN9TN8M:00000028 [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:50:45.6493450+07:00 0HM6RRHN9TN8M:00000028 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 23.4392ms (afa2e885)
+2021-02-28T18:50:45.6493640+07:00 0HM6RRHN9TN8M:00000028 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:50:45.6494190+07:00 0HM6RRHN9TN8M:00000028 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 24.2884ms (791a596a)
+2021-02-28T18:51:21.7403610+07:00 0HM6RRHN9TN8M:00000029 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:51:21.7404620+07:00 0HM6RRHN9TN8M:00000029 [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:51:21.7406020+07:00 0HM6RRHN9TN8M:00000029 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 204 - - 0.2580ms (791a596a)
+2021-02-28T18:51:21.7426210+07:00 0HM6RRHN9TN8M:0000002A [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - (ca22a1cb)
+2021-02-28T18:51:21.7427130+07:00 0HM6RRHN9TN8M:0000002A [INF] CORS policy execution successful. (5409d6ef)
+2021-02-28T18:51:21.7429230+07:00 0HM6RRHN9TN8M:0000002A [INF] Successfully validated the token. (60169667)
+2021-02-28T18:51:21.7430320+07:00 0HM6RRHN9TN8M:0000002A [INF] Authorization was successful. (0d575a54)
+2021-02-28T18:51:21.7430580+07:00 0HM6RRHN9TN8M:0000002A [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T18:51:21.7431390+07:00 0HM6RRHN9TN8M:0000002A [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(API.Helpers.LikesParams)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T18:51:21.7436300+07:00 0HM6RRHN9TN8M:0000002A [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:51:21.7471260+07:00 0HM6RRHN9TN8M:0000002A [INF] Executed DbCommand ("3"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0" (0723d8ff)
+2021-02-28T18:51:21.7502950+07:00 0HM6RRHN9TN8M:0000002A [INF] Executed DbCommand ("3"ms) [Parameters=["@__likesParams_UserId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__likesParams_UserId_0
+ORDER BY [u].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2021-02-28T18:51:21.7544620+07:00 0HM6RRHN9TN8M:0000002A [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T18:51:21.7609230+07:00 0HM6RRHN9TN8M:0000002A [INF] Executed DbCommand ("3"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T18:51:21.7680860+07:00 0HM6RRHN9TN8M:0000002A [INF] Executing "OkObjectResult", writing value of type '"API.Helpers.PagedList`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T18:51:21.7682750+07:00 0HM6RRHN9TN8M:0000002A [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 25.1063ms (afa2e885)
+2021-02-28T18:51:21.7683020+07:00 0HM6RRHN9TN8M:0000002A [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T18:51:21.7684020+07:00 0HM6RRHN9TN8M:0000002A [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?pageNumber=1&pageSize=4&predicate=liked - - - 200 - application/json;+charset=utf-8 25.7871ms (791a596a)
+2021-02-28T18:56:20.8641290+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T18:56:26.6155840+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T18:56:27.0198530+07:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T18:56:27.0659900+07:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T18:56:27.0729050+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T18:56:27.0752100+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T18:56:27.0962560+07:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T18:56:27.1146900+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T18:56:27.3301230+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T18:56:27.3525790+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T18:56:27.5157100+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T18:56:27.5157830+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T18:56:27.5159370+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T18:56:27.5159640+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T18:56:27.5159850+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T19:03:14.6246470+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T19:03:19.0055370+07:00  [ERR] An error occured during migration (dd67de31)
+System.InvalidOperationException: Unable to determine the relationship represented by navigation 'AppUser.MessagesSent' of type 'ICollection<Message>'. Either manually configure the relationship, or ignore this property using the '[NotMapped]' attribute or by using 'EntityTypeBuilder.Ignore' in 'OnModelCreating'.
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.ValidatePropertyMapping(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.RelationalModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.SqlServer.Internal.SqlServerModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.ValidatingConvention.ProcessModelFinalized(IModel model)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.ImmediateConventionScope.OnModelFinalized(IModel model)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.OnModelFinalized(IModel model)
+   at Microsoft.EntityFrameworkCore.Metadata.Internal.Model.FinalizeModel()
+   at Microsoft.EntityFrameworkCore.ModelBuilder.FinalizeModel()
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, ModelDependencies modelDependencies)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, IConventionSetBuilder conventionSetBuilder, ModelDependencies modelDependencies)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__7_3(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.GetRelationalService[TService](IInfrastructure`1 databaseFacade)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.MigrateAsync(DatabaseFacade databaseFacade, CancellationToken cancellationToken)
+   at API.Program.Main(String[] args) in /Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API/Program.cs:line 26
+2021-02-28T19:03:19.0434530+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T19:03:19.2412460+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T19:03:19.2413670+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T19:03:19.2415220+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T19:03:19.2415590+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T19:03:19.2416170+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T19:07:18.8719390+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T19:07:22.6399720+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T19:07:23.0368430+07:00  [INF] Executed DbCommand ("33"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:07:23.0777100+07:00  [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:07:23.0844420+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:07:23.0865550+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:07:23.1025470+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T19:07:23.1222580+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T19:07:23.3174820+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T19:07:23.3365610+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T19:07:23.5095080+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T19:07:23.5096210+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T19:07:23.5097600+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T19:07:23.5097820+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T19:07:23.5098130+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T19:07:52.3125670+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T19:07:56.1276230+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T19:07:56.5360080+07:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:07:56.5811240+07:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:07:56.5887900+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:07:56.5916580+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:07:56.6090970+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T19:07:56.6279430+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T19:07:56.8343820+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T19:07:56.8546620+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T19:07:57.0074590+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T19:07:57.0075480+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T19:07:57.0076550+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T19:07:57.0076880+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T19:07:57.0077080+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T19:09:10.5419940+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T19:09:14.2913220+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T19:09:14.6806690+07:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:09:14.7233370+07:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:09:14.7303610+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:09:14.7334440+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:09:14.7499100+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T19:09:14.7693690+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T19:09:14.9763740+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T19:09:14.9968670+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T19:09:15.1455770+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T19:09:15.1456650+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T19:09:15.1457940+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T19:09:15.1458180+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T19:09:15.1458600+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T19:09:22.2294610+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T19:09:26.0546210+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T19:09:26.4362880+07:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:09:26.4866140+07:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:09:26.4942680+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T19:09:26.4972810+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T19:09:26.5169370+07:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T19:09:26.5545910+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T19:09:26.7938180+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T19:09:26.8167090+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T19:09:26.9738370+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T19:09:26.9739200+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T19:09:26.9740490+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T19:09:26.9740790+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T19:09:26.9741060+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T19:09:29.9551940+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T19:10:09.6475310+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
