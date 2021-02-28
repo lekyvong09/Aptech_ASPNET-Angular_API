@@ -82,3 +82,387 @@ SELECT @@ROWCOUNT;" (0723d8ff)
 2021-02-28T16:19:24.9783020+07:00 0HM6RP7O40O2N:00000003 [INF] Executed action "API.Controllers.UsersController.GetUsers (API)" in 741.2174ms (afa2e885)
 2021-02-28T16:19:24.9790380+07:00 0HM6RP7O40O2N:00000003 [INF] Executed endpoint '"API.Controllers.UsersController.GetUsers (API)"' (99874f2b)
 2021-02-28T16:19:24.9840910+07:00 0HM6RP7O40O2N:00000003 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/users?pageNumber=1&pageSize=4&minAge=18&maxAge=99&gender=female&orderBy=lastActive - - - 200 - application/json;+charset=utf-8 986.9732ms (791a596a)
+2021-02-28T16:37:01.4036850+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T16:50:20.4728990+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:50:20.9183630+07:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:50:20.9634370+07:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:50:20.9716540+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:50:20.9747700+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:50:20.9929870+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T16:50:21.0112690+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T16:50:21.2535170+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T16:50:21.2762930+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T16:50:21.4494040+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T16:50:21.4495070+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T16:50:21.4496880+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T16:50:21.4497450+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T16:50:21.4497620+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T16:53:29.8830280+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T16:53:34.1544760+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:53:34.5884220+07:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:53:34.6401230+07:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:53:34.6479560+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:53:34.6510530+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:53:34.6729870+07:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T16:53:34.6938330+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T16:53:34.9095460+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T16:53:34.9312460+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T16:53:35.0918560+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T16:53:35.0919670+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T16:53:35.0921220+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T16:53:35.0921710+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T16:53:35.0922110+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T16:54:54.5903620+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T16:54:58.2751220+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:54:58.6792400+07:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:54:58.7265430+07:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:54:58.7329820+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:54:58.7350400+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:54:58.7511390+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T16:54:58.7709980+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T16:54:58.9816010+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T16:54:59.0034340+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T16:54:59.1646230+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T16:54:59.1647290+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T16:54:59.1648840+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T16:54:59.1649230+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T16:54:59.1649950+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T16:55:42.2322720+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T16:55:45.8275180+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:55:46.1936900+07:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:55:46.2329810+07:00  [INF] Executed DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:55:46.2395850+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:55:46.2423190+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:55:46.2595910+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T16:55:46.2777550+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T16:55:46.4756290+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T16:55:46.4956970+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T16:55:46.6421840+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T16:55:46.6423260+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T16:55:46.6424270+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T16:55:46.6424570+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T16:55:46.6424740+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T16:55:54.3511350+07:00  [INF] Application is shutting down... (90f52c38)
+2021-02-28T16:56:00.4102700+07:00  [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:56:00.7913570+07:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:56:00.8373380+07:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:56:00.8444880+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2021-02-28T16:56:00.8467260+07:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2021-02-28T16:56:00.8633510+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2021-02-28T16:56:00.8823710+07:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2021-02-28T16:56:01.0810150+07:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2021-02-28T16:56:01.0999970+07:00  [INF] User profile is available. Using '"/Users/ray/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2021-02-28T16:56:01.2373180+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2021-02-28T16:56:01.2374360+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2021-02-28T16:56:01.2375320+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-02-28T16:56:01.2375510+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-02-28T16:56:01.2375750+07:00  [INF] Content root path: "/Users/ray/Dropbox/Projects/dotnetCore/DatingApp/API" (b5d60022)
+2021-02-28T16:57:34.7362990+07:00 0HM6RPT2QOTP0:00000002 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/account/login application/json 57 (ca22a1cb)
+2021-02-28T16:57:34.8133670+07:00 0HM6RPT2QOTP0:00000002 [INF] Executing endpoint '"API.Controllers.AccountController.Login (API)"' (500cc934)
+2021-02-28T16:57:34.8532900+07:00 0HM6RPT2QOTP0:00000002 [INF] Route matched with "{action = \"Login\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.DTOs.UserDto]] Login(API.DTOs.LoginDto)" on controller "API.Controllers.AccountController" ("API"). (122b2fdf)
+2021-02-28T16:57:35.0580340+07:00 0HM6RPT2QOTP0:00000002 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:57:35.2536410+07:00 0HM6RPT2QOTP0:00000002 [INF] Executed DbCommand ("24"ms) [Parameters=["@__loginDto_Username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__loginDto_Username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T16:57:35.4657030+07:00 0HM6RPT2QOTP0:00000002 [INF] Executing "ObjectResult", writing value of type '"API.DTOs.UserDto"'. (605b4265)
+2021-02-28T16:57:35.4874110+07:00 0HM6RPT2QOTP0:00000002 [INF] Executed action "API.Controllers.AccountController.Login (API)" in 628.2686ms (afa2e885)
+2021-02-28T16:57:35.4879540+07:00 0HM6RPT2QOTP0:00000002 [INF] Executed endpoint '"API.Controllers.AccountController.Login (API)"' (99874f2b)
+2021-02-28T16:57:35.4926480+07:00 0HM6RPT2QOTP0:00000002 [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/account/login application/json 57 - 200 - application/json;+charset=utf-8 762.1310ms (791a596a)
+2021-02-28T16:58:12.1745090+07:00 0HM6RPT2QOTP0:00000003 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/likes/tia - 0 (ca22a1cb)
+2021-02-28T16:58:12.2280470+07:00 0HM6RPT2QOTP0:00000003 [INF] Successfully validated the token. (60169667)
+2021-02-28T16:58:12.2312860+07:00 0HM6RPT2QOTP0:00000003 [INF] Authorization was successful. (0d575a54)
+2021-02-28T16:58:12.2316160+07:00 0HM6RPT2QOTP0:00000003 [INF] Executing endpoint '"API.Controllers.LikesController.AddLike (API)"' (500cc934)
+2021-02-28T16:58:12.2364430+07:00 0HM6RPT2QOTP0:00000003 [INF] Route matched with "{action = \"AddLike\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] AddLike(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T16:58:12.2670390+07:00 0HM6RPT2QOTP0:00000003 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:58:12.2810100+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T16:58:12.2976940+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [l].[SourceUserId], [l].[LikedUserId]
+FROM (
+    SELECT TOP(1) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Id] = @__userId_0
+) AS [t]
+LEFT JOIN [Likes] AS [l] ON [t].[Id] = [l].[SourceUserId]
+ORDER BY [t].[Id], [l].[SourceUserId], [l].[LikedUserId]" (0723d8ff)
+2021-02-28T16:58:12.3152480+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [l].[SourceUserId], [l].[LikedUserId]
+FROM [Likes] AS [l]
+WHERE ([l].[SourceUserId] = @__p_0) AND ([l].[LikedUserId] = @__p_1)" (0723d8ff)
+2021-02-28T16:58:12.4345420+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed DbCommand ("5"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Likes] ([LikedUserId], [SourceUserId])
+VALUES (@p0, @p1);" (0723d8ff)
+2021-02-28T16:58:12.4613840+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T16:58:12.4711610+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T16:58:12.4809450+07:00 0HM6RPT2QOTP0:00000003 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200 (e28ccfae)
+2021-02-28T16:58:12.4810830+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed action "API.Controllers.LikesController.AddLike (API)" in 244.5753ms (afa2e885)
+2021-02-28T16:58:12.4811140+07:00 0HM6RPT2QOTP0:00000003 [INF] Executed endpoint '"API.Controllers.LikesController.AddLike (API)"' (99874f2b)
+2021-02-28T16:58:12.4817050+07:00 0HM6RPT2QOTP0:00000003 [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/likes/tia - 0 - 200 0 - 307.2910ms (791a596a)
+2021-02-28T16:59:02.8296530+07:00 0HM6RPT2QOTP0:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?predicate=liked - - (ca22a1cb)
+2021-02-28T16:59:02.8325110+07:00 0HM6RPT2QOTP0:00000004 [INF] Successfully validated the token. (60169667)
+2021-02-28T16:59:02.8328630+07:00 0HM6RPT2QOTP0:00000004 [INF] Authorization was successful. (0d575a54)
+2021-02-28T16:59:02.8329500+07:00 0HM6RPT2QOTP0:00000004 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T16:59:02.8357170+07:00 0HM6RPT2QOTP0:00000004 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T16:59:02.8425140+07:00 0HM6RPT2QOTP0:00000004 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T16:59:02.8941990+07:00 0HM6RPT2QOTP0:00000004 [INF] Executed DbCommand ("12"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__userId_0" (0723d8ff)
+2021-02-28T16:59:02.8985560+07:00 0HM6RPT2QOTP0:00000004 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T16:59:02.9019740+07:00 0HM6RPT2QOTP0:00000004 [INF] Executed DbCommand ("1"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T16:59:02.9049850+07:00 0HM6RPT2QOTP0:00000004 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T16:59:02.9130950+07:00 0HM6RPT2QOTP0:00000004 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 77.2683ms (afa2e885)
+2021-02-28T16:59:02.9131500+07:00 0HM6RPT2QOTP0:00000004 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T16:59:02.9133350+07:00 0HM6RPT2QOTP0:00000004 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?predicate=liked - - - 200 - application/json;+charset=utf-8 83.7103ms (791a596a)
+2021-02-28T17:00:51.0980020+07:00 0HM6RPT2QOTP0:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?predicate=likedBy - - (ca22a1cb)
+2021-02-28T17:00:51.0985030+07:00 0HM6RPT2QOTP0:00000005 [INF] Successfully validated the token. (60169667)
+2021-02-28T17:00:51.0991170+07:00 0HM6RPT2QOTP0:00000005 [INF] Authorization was successful. (0d575a54)
+2021-02-28T17:00:51.0993750+07:00 0HM6RPT2QOTP0:00000005 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T17:00:51.0995780+07:00 0HM6RPT2QOTP0:00000005 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T17:00:51.1011460+07:00 0HM6RPT2QOTP0:00000005 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T17:00:51.1135000+07:00 0HM6RPT2QOTP0:00000005 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[SourceUserId] = [u].[Id]
+WHERE [l].[LikedUserId] = @__userId_0" (0723d8ff)
+2021-02-28T17:00:51.1163750+07:00 0HM6RPT2QOTP0:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T17:00:51.1225380+07:00 0HM6RPT2QOTP0:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T17:00:51.1255710+07:00 0HM6RPT2QOTP0:00000005 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T17:00:51.1258330+07:00 0HM6RPT2QOTP0:00000005 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 26.2211ms (afa2e885)
+2021-02-28T17:00:51.1258650+07:00 0HM6RPT2QOTP0:00000005 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T17:00:51.1261610+07:00 0HM6RPT2QOTP0:00000005 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?predicate=likedBy - - - 200 - application/json;+charset=utf-8 28.1208ms (791a596a)
+2021-02-28T17:00:54.7959500+07:00 0HM6RPT2QOTP0:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?predicate=liked - - (ca22a1cb)
+2021-02-28T17:00:54.7962200+07:00 0HM6RPT2QOTP0:00000006 [INF] Successfully validated the token. (60169667)
+2021-02-28T17:00:54.7963000+07:00 0HM6RPT2QOTP0:00000006 [INF] Authorization was successful. (0d575a54)
+2021-02-28T17:00:54.7963170+07:00 0HM6RPT2QOTP0:00000006 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T17:00:54.7964400+07:00 0HM6RPT2QOTP0:00000006 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T17:00:54.7968400+07:00 0HM6RPT2QOTP0:00000006 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T17:00:54.8020080+07:00 0HM6RPT2QOTP0:00000006 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__userId_0" (0723d8ff)
+2021-02-28T17:00:54.8053130+07:00 0HM6RPT2QOTP0:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T17:00:54.8110320+07:00 0HM6RPT2QOTP0:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T17:00:54.8152310+07:00 0HM6RPT2QOTP0:00000006 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T17:00:54.8154710+07:00 0HM6RPT2QOTP0:00000006 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 19.0006ms (afa2e885)
+2021-02-28T17:00:54.8155350+07:00 0HM6RPT2QOTP0:00000006 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T17:00:54.8156380+07:00 0HM6RPT2QOTP0:00000006 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?predicate=liked - - - 200 - application/json;+charset=utf-8 19.6966ms (791a596a)
+2021-02-28T17:02:45.9958780+07:00 0HM6RPT2QOTP0:00000007 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/account/login application/json 53 (ca22a1cb)
+2021-02-28T17:02:45.9966250+07:00 0HM6RPT2QOTP0:00000007 [INF] Executing endpoint '"API.Controllers.AccountController.Login (API)"' (500cc934)
+2021-02-28T17:02:45.9967560+07:00 0HM6RPT2QOTP0:00000007 [INF] Route matched with "{action = \"Login\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[API.DTOs.UserDto]] Login(API.DTOs.LoginDto)" on controller "API.Controllers.AccountController" ("API"). (122b2fdf)
+2021-02-28T17:02:45.9974060+07:00 0HM6RPT2QOTP0:00000007 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T17:02:46.0000920+07:00 0HM6RPT2QOTP0:00000007 [INF] Executed DbCommand ("2"ms) [Parameters=["@__loginDto_Username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__loginDto_Username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T17:02:46.0007250+07:00 0HM6RPT2QOTP0:00000007 [INF] Executing "ObjectResult", writing value of type '"API.DTOs.UserDto"'. (605b4265)
+2021-02-28T17:02:46.0009000+07:00 0HM6RPT2QOTP0:00000007 [INF] Executed action "API.Controllers.AccountController.Login (API)" in 4.1171ms (afa2e885)
+2021-02-28T17:02:46.0009660+07:00 0HM6RPT2QOTP0:00000007 [INF] Executed endpoint '"API.Controllers.AccountController.Login (API)"' (99874f2b)
+2021-02-28T17:02:46.0011770+07:00 0HM6RPT2QOTP0:00000007 [INF] Request finished HTTP/1.1 POST https://localhost:5001/api/account/login application/json 53 - 200 - application/json;+charset=utf-8 5.2981ms (791a596a)
+2021-02-28T17:03:06.7799440+07:00 0HM6RPT2QOTP0:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?predicate=likedBy - - (ca22a1cb)
+2021-02-28T17:03:06.7804280+07:00 0HM6RPT2QOTP0:00000008 [INF] Successfully validated the token. (60169667)
+2021-02-28T17:03:06.7805200+07:00 0HM6RPT2QOTP0:00000008 [INF] Authorization was successful. (0d575a54)
+2021-02-28T17:03:06.7805770+07:00 0HM6RPT2QOTP0:00000008 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T17:03:06.7806720+07:00 0HM6RPT2QOTP0:00000008 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T17:03:06.7811760+07:00 0HM6RPT2QOTP0:00000008 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T17:03:06.7839750+07:00 0HM6RPT2QOTP0:00000008 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[SourceUserId] = [u].[Id]
+WHERE [l].[LikedUserId] = @__userId_0" (0723d8ff)
+2021-02-28T17:03:06.7870010+07:00 0HM6RPT2QOTP0:00000008 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T17:03:06.7908570+07:00 0HM6RPT2QOTP0:00000008 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T17:03:06.7946300+07:00 0HM6RPT2QOTP0:00000008 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T17:03:06.7948520+07:00 0HM6RPT2QOTP0:00000008 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 14.052ms (afa2e885)
+2021-02-28T17:03:06.7948810+07:00 0HM6RPT2QOTP0:00000008 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T17:03:06.7949980+07:00 0HM6RPT2QOTP0:00000008 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?predicate=likedBy - - - 200 - application/json;+charset=utf-8 15.0840ms (791a596a)
+2021-02-28T17:03:17.0460750+07:00 0HM6RPT2QOTP0:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/api/likes?predicate=liked - - (ca22a1cb)
+2021-02-28T17:03:17.0463690+07:00 0HM6RPT2QOTP0:00000009 [INF] Successfully validated the token. (60169667)
+2021-02-28T17:03:17.0464530+07:00 0HM6RPT2QOTP0:00000009 [INF] Authorization was successful. (0d575a54)
+2021-02-28T17:03:17.0464780+07:00 0HM6RPT2QOTP0:00000009 [INF] Executing endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (500cc934)
+2021-02-28T17:03:17.0465710+07:00 0HM6RPT2QOTP0:00000009 [INF] Route matched with "{action = \"GetUserLikes\", controller = \"Likes\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[API.DTOs.LikeDto]]] GetUserLikes(System.String)" on controller "API.Controllers.LikesController" ("API"). (122b2fdf)
+2021-02-28T17:03:17.0471000+07:00 0HM6RPT2QOTP0:00000009 [INF] Entity Framework Core "5.0.2" initialized '"DataContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2021-02-28T17:03:17.0503410+07:00 0HM6RPT2QOTP0:00000009 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Username], [u].[KnownAs], [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], (
+    SELECT TOP(1) [p].[Url]
+    FROM [Photos] AS [p]
+    WHERE ([u].[Id] = [p].[AppUserId]) AND ([p].[IsMain] = CAST(1 AS bit)))
+FROM [Likes] AS [l]
+INNER JOIN [Users] AS [u] ON [l].[LikedUserId] = [u].[Id]
+WHERE [l].[SourceUserId] = @__userId_0" (0723d8ff)
+2021-02-28T17:03:17.0532660+07:00 0HM6RPT2QOTP0:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__username_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[City], [t].[Country], [t].[Created], [t].[DateOfBirth], [t].[Gender], [t].[Interests], [t].[Introduction], [t].[KnownAs], [t].[LastActive], [t].[LookingFor], [t].[PasswordHash], [t].[PasswordSalt], [t].[Username], [p].[Id], [p].[AppUserId], [p].[IsMain], [p].[PublicId], [p].[Url]
+FROM (
+    SELECT TOP(2) [u].[Id], [u].[City], [u].[Country], [u].[Created], [u].[DateOfBirth], [u].[Gender], [u].[Interests], [u].[Introduction], [u].[KnownAs], [u].[LastActive], [u].[LookingFor], [u].[PasswordHash], [u].[PasswordSalt], [u].[Username]
+    FROM [Users] AS [u]
+    WHERE [u].[Username] = @__username_0
+) AS [t]
+LEFT JOIN [Photos] AS [p] ON [t].[Id] = [p].[AppUserId]
+ORDER BY [t].[Id], [p].[Id]" (0723d8ff)
+2021-02-28T17:03:17.0580890+07:00 0HM6RPT2QOTP0:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Users] SET [LastActive] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2021-02-28T17:03:17.0620370+07:00 0HM6RPT2QOTP0:00000009 [INF] Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[API.DTOs.LikeDto, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (605b4265)
+2021-02-28T17:03:17.0621990+07:00 0HM6RPT2QOTP0:00000009 [INF] Executed action "API.Controllers.LikesController.GetUserLikes (API)" in 15.6023ms (afa2e885)
+2021-02-28T17:03:17.0622240+07:00 0HM6RPT2QOTP0:00000009 [INF] Executed endpoint '"API.Controllers.LikesController.GetUserLikes (API)"' (99874f2b)
+2021-02-28T17:03:17.0623640+07:00 0HM6RPT2QOTP0:00000009 [INF] Request finished HTTP/1.1 GET https://localhost:5001/api/likes?predicate=liked - - - 200 - application/json;+charset=utf-8 16.2713ms (791a596a)
