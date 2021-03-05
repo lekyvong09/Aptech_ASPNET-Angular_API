@@ -29,13 +29,13 @@ namespace API.Data
 
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
-            return await _context.Users.Include(p => p.Photos).AsSingleQuery().SingleOrDefaultAsync(x => x.Username == username);
+            return await _context.Users.Include(p => p.Photos).AsSingleQuery().SingleOrDefaultAsync(x => x.UserName == username);
         }
 
         // second way
         public async Task<MemberDto> GetMemberAsync(string username)
         {
-            var user = await _context.Users.Where(x => x.Username == username)
+            var user = await _context.Users.Where(x => x.UserName == username)
                     .SingleOrDefaultAsync();
             return _mapper.Map<MemberDto>(user);
         }
@@ -47,11 +47,11 @@ namespace API.Data
 
             IQueryable<MemberDto> query = _context.Users
                         .Include(p => p.Photos).AsSingleQuery()
-                        .Where(u => u.Username != userParams.CurrentUsername && u.Gender == userParams.Gender && u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob)
+                        .Where(u => u.UserName != userParams.CurrentUsername && u.Gender == userParams.Gender && u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob)
                         .Select(user => new MemberDto
                         {
                             Id = user.Id,
-                            Username = user.Username,
+                            Username = user.UserName,
                             PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url,
                             Age = user.GetAge(),
                             KnownAs = user.KnownAs,
