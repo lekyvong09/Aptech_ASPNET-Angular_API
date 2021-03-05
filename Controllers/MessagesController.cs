@@ -27,6 +27,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+
         [HttpPost]
         public async Task<ActionResult<MessageDto>> CreateMessage(CreateMessageDto createMessageDto)
         {
@@ -56,6 +57,7 @@ namespace API.Controllers
             return BadRequest("Failed to send message");
         }
 
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessagesForUser([FromQuery] MessageParams messageParams)
         {
@@ -68,12 +70,38 @@ namespace API.Controllers
             return messages;
         }
 
+
         [HttpGet("thread/{username}")]
         public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessageThread(string username)
         {
             var currentUsername = User.FindFirst(ClaimTypes.Name)?.Value;
 
             return Ok(await _messageRepository.GetMessageThread(currentUsername, username));
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteMessage(int id)
+        {
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
+
+            var message = await _messageRepository.GetMessage(id);
+
+            if (message.Sender.Username != username && message.Recipient.Username != username)
+                return Unauthorized();
+
+            if (message.Sender.Username == username)
+                message.SenderDeleted = true;
+
+            if (message.Recipient.Username == username)
+                message.RecipientDeleted = true;
+
+            if (message.SenderDeleted && message.RecipientDeleted)
+                _messageRepository.DeleteMessage(message);
+
+            if (await _messageRepository.SaveAllAsync()) return Ok();
+
+            return BadRequest("Problem deleting the message");
         }
     }
 }
