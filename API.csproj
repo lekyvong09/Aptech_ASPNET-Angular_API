@@ -30,5 +30,6 @@
     <Folder Include="Middleware\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
+    <Folder Include="SignalR\" />
   </ItemGroup>
 </Project>
