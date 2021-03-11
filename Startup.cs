@@ -61,6 +61,20 @@ namespace API
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
+
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
             });
 
             services.AddAuthorization(opt =>
@@ -110,7 +124,7 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:4200"));
             app.UseAuthentication();
             app.UseAuthorization();
 
