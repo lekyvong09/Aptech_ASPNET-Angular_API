@@ -32,7 +32,7 @@ namespace API.SignalR
         {
             var username = Context.User.FindFirst(ClaimTypes.Name)?.Value;
 
-            await _tracker.UserConnected(username, Context.ConnectionId);
+            await _tracker.UserDisconnected(username, Context.ConnectionId);
             await Clients.Others.SendAsync("UserIsOffline", username);
 
             var currentUsers = await _tracker.GetOnlineUsers();
