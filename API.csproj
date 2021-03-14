@@ -31,5 +31,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
     <Folder Include="SignalR\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
 </Project>
