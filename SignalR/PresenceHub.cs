@@ -20,11 +20,12 @@ namespace API.SignalR
         {
             var username = Context.User.FindFirst(ClaimTypes.Name)?.Value;
 
-            await _tracker.UserConnected(username, Context.ConnectionId);
-            await Clients.Others.SendAsync("UserIsOnline", username);
+            var isOnline = await _tracker.UserConnected(username, Context.ConnectionId);
+            if (isOnline)
+                await Clients.Others.SendAsync("UserIsOnline", username);
 
             var currentUsers = await _tracker.GetOnlineUsers();
-            await Clients.All.SendAsync("GetOnlineUsers", currentUsers);
+            await Clients.Caller.SendAsync("GetOnlineUsers", currentUsers);
         }
 
 
@@ -32,11 +33,12 @@ namespace API.SignalR
         {
             var username = Context.User.FindFirst(ClaimTypes.Name)?.Value;
 
-            await _tracker.UserDisconnected(username, Context.ConnectionId);
-            await Clients.Others.SendAsync("UserIsOffline", username);
+            var isOffline = await _tracker.UserDisconnected(username, Context.ConnectionId);
+            if (isOffline)
+                await Clients.Others.SendAsync("UserIsOffline", username);
 
-            var currentUsers = await _tracker.GetOnlineUsers();
-            await Clients.All.SendAsync("GetOnlineUsers", currentUsers);
+            //var currentUsers = await _tracker.GetOnlineUsers();
+            //await Clients.All.SendAsync("GetOnlineUsers", currentUsers);
 
             await base.OnDisconnectedAsync(exception);
         }
