@@ -144,6 +144,10 @@ namespace API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            // Check to use index.html if it exists
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
