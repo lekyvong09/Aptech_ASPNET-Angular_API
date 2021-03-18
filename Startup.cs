@@ -153,6 +153,10 @@ namespace API
                 endpoints.MapControllers();
                 endpoints.MapHub<PresenceHub>("hubs/presence");
                 endpoints.MapHub<MessageHub>("hubs/message");
+
+                // dotnet only know the index.html but does not know Angular route
+                // Fallback is used to direct to index.html of Angular for routing
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }
