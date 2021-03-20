@@ -110,7 +110,7 @@ namespace API
 
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddControllers();
             services.AddCors();
