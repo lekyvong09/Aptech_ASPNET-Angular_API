@@ -105,7 +105,7 @@ namespace API
             services.AddScoped<LogUserActivity>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
-            // Allow caching presense user through SignalR at application level (but not user session level)
+            // Allow caching presense user through SignalR at application level (but not user session level)  
             services.AddSingleton<PresenceTracker>();
 
             services.AddDbContext<DataContext>(options =>
