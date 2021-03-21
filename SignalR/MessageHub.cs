@@ -82,7 +82,7 @@ namespace API.SignalR
 
             if (group.Connections.Any(x => x.Username == recipient.UserName))
             {
-                message.DateRead = DateTime.Now;
+                message.DateRead = DateTime.UtcNow;
             }
             else
             {
