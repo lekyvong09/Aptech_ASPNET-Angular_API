@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -12,6 +13,29 @@ namespace API.Data
 {
     public class Seed
     {
+        public static void SeedFantasy(DataContext context)
+        {
+            // Check if there is any data. If there is, skip adding.
+            if (context.FantasiesDbSet.Any()) return;
+
+            var fantasies = new List<Fantasy>
+            {
+                new Fantasy {
+                    FantasyId = "romatic",
+                    Description = "I love romatic"
+                },
+                new Fantasy {
+                    FantasyId = "desire",
+                    Description = "My dark desire is..."
+                }
+            };
+            foreach (var fantasy in fantasies)
+            {
+                context.FantasiesDbSet.Add(fantasy);
+            }
+            context.SaveChanges();
+        }
+
         public static async Task SeedUsers(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
             // Check if there is any user data. If there is, skip adding users.
