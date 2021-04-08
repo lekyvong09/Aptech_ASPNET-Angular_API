@@ -71,6 +71,12 @@ namespace API.Data
                 .HasForeignKey(s => s.SenderId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<AppUser>()
+                .HasOne(s => s.Fantasies)
+                .WithMany(l => l.UserFantasy)
+                .HasForeignKey(s => s.MyFantasy)
+                .OnDelete(DeleteBehavior.NoAction);
+
             // Put at the end of builder to convert 
             builder.ApplyUtcDateTimeConverter();
         }

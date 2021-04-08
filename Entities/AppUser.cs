@@ -32,6 +32,9 @@ namespace API.Entities
 
         public ICollection<AppUserRole> UserRoles { get; set; }
 
+        public Fantasy Fantasies { get; set; }
+        public string MyFantasy { get; set; }
+
         public int GetAge()
         {
             return DateOfBirth.CalculateAge();
