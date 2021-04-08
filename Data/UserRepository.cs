@@ -29,13 +29,13 @@ namespace API.Data
 
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
-            return await _context.Users.Include(p => p.Photos).AsSingleQuery().SingleOrDefaultAsync(x => x.UserName == username);
+            return await _context.Users.Include(p => p.Photos).Include(f => f.Fantasies).AsSingleQuery().SingleOrDefaultAsync(x => x.UserName == username);
         }
 
         // second way
         public async Task<MemberDto> GetMemberAsync(string username)
         {
-            var user = await _context.Users.Where(x => x.UserName == username)
+            var user = await _context.Users.Include(f => f.Fantasies).Where(x => x.UserName == username)
                     .SingleOrDefaultAsync();
             return _mapper.Map<MemberDto>(user);
         }
@@ -46,6 +46,7 @@ namespace API.Data
             var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
 
             IQueryable<MemberDto> query = _context.Users
+                        .Include(f => f.Fantasies)
                         .Include(p => p.Photos).AsSingleQuery()
                         .Where(u => u.UserName != userParams.CurrentUsername && u.Gender == userParams.Gender && u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob)
                         .Select(user => new MemberDto
@@ -63,6 +64,7 @@ namespace API.Data
                             Interests = user.Interests,
                             City = user.City,
                             Country = user.Country,
+                            MyFantasies = user.Fantasies.Description,
                             Photos = user.Photos.Select(photo => new PhotoDto
                             {
                                 Id = photo.Id,
