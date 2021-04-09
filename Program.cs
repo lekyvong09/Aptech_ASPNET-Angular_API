@@ -21,15 +21,29 @@ namespace API
             var host = CreateHostBuilder(args).Build();
             using var scope = host.Services.CreateScope();
 
+            var other = false;
+
             var services = scope.ServiceProvider;
             try
             {
-                var context = services.GetRequiredService<DataContext>();
-                var userManager = services.GetRequiredService<UserManager<AppUser>>();
-                var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
-                context.Database.Migrate();
-                Seed.SeedFantasy(context);
-                await Seed.SeedUsers(userManager, roleManager);
+                if (!other)
+                {
+                    var context = services.GetRequiredService<DataContext>();
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+                    context.Database.Migrate();
+                    Seed.SeedFantasy(context);
+                    await Seed.SeedUsers(userManager, roleManager);
+                }
+                else
+                {
+                    var context = services.GetRequiredService<DataContext>();
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+                    context.Database.Migrate();
+                    //Seed.SeedFantasy(context);
+                    await Seed.SeedUsersAndFantasy(userManager, roleManager, context);
+                }
             }
             catch (Exception ex)
             {

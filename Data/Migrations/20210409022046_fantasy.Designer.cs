@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210408045415_addFatasyEntity")]
-    partial class addFatasyEntity
+    [Migration("20210409022046_fantasy")]
+    partial class fantasy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,6 +82,9 @@ namespace API.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("FantasiesFantasyId")
+                        .HasColumnType("text");
+
                     b.Property<string>("Gender")
                         .HasColumnType("text");
 
@@ -104,9 +107,6 @@ namespace API.Data.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("LookingFor")
-                        .HasColumnType("text");
-
-                    b.Property<string>("MyFantasy")
                         .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
@@ -138,7 +138,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MyFantasy");
+                    b.HasIndex("FantasiesFantasyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -380,8 +380,7 @@ namespace API.Data.Migrations
                 {
                     b.HasOne("API.Entities.Fantasy", "Fantasies")
                         .WithMany("UserFantasy")
-                        .HasForeignKey("MyFantasy")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("FantasiesFantasyId");
 
                     b.Navigation("Fantasies");
                 });

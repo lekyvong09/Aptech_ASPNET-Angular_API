@@ -2,12 +2,12 @@
 
 namespace API.Data.Migrations
 {
-    public partial class addFatasyEntity : Migration
+    public partial class fantasy : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "MyFantasy",
+                name: "FantasiesFantasyId",
                 table: "AspNetUsers",
                 type: "text",
                 nullable: true);
@@ -25,33 +25,34 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_MyFantasy",
+                name: "IX_AspNetUsers_FantasiesFantasyId",
                 table: "AspNetUsers",
-                column: "MyFantasy");
+                column: "FantasiesFantasyId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUsers_Fantasy_MyFantasy",
+                name: "FK_AspNetUsers_Fantasy_FantasiesFantasyId",
                 table: "AspNetUsers",
-                column: "MyFantasy",
+                column: "FantasiesFantasyId",
                 principalTable: "Fantasy",
-                principalColumn: "FantasyId");
+                principalColumn: "FantasyId",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUsers_Fantasy_MyFantasy",
+                name: "FK_AspNetUsers_Fantasy_FantasiesFantasyId",
                 table: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Fantasy");
 
             migrationBuilder.DropIndex(
-                name: "IX_AspNetUsers_MyFantasy",
+                name: "IX_AspNetUsers_FantasiesFantasyId",
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
-                name: "MyFantasy",
+                name: "FantasiesFantasyId",
                 table: "AspNetUsers");
         }
     }

@@ -26,7 +26,7 @@ namespace API.Data
                 },
                 new Fantasy {
                     FantasyId = "desire",
-                    Description = "My dark desire is..."
+                    Description = "My true desire is..."
                 }
             };
             foreach (var fantasy in fantasies)
@@ -72,6 +72,55 @@ namespace API.Data
             }
 
             //await context.SaveChangesAsync();
+
+            var admin = new AppUser
+            {
+                UserName = "admin"
+            };
+
+            await userManager.CreateAsync(admin, "password");
+            await userManager.AddToRoleAsync(admin, "Admin");
+            await userManager.AddToRoleAsync(admin, "Moderator");
+        }
+
+
+        public static async Task SeedUsersAndFantasy(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, DataContext context)
+        {
+            // Check if there is any user data. If there is, skip adding users.
+            if (await userManager.Users.AnyAsync()) return;
+
+            var data = await System.IO.File.ReadAllTextAsync("Data/UserAndFantasySeed.json");
+
+            if (data == null) return;
+
+
+            var roles = new List<AppRole>
+            {
+                new AppRole { Name = "Member"},
+                new AppRole { Name = "Admin"},
+                new AppRole { Name = "Moderator"},
+            };
+
+            foreach (var role in roles)
+            {
+                await roleManager.CreateAsync(role);
+            }
+
+
+            var dataList = JsonSerializer.Deserialize<List<Fantasy>>(data);
+
+            foreach (var d in dataList)
+            {
+                foreach (var user in d.UserFantasy)
+                {
+                    user.UserName = user.UserName.ToLower();
+                    await userManager.CreateAsync(user, "password");
+                    await userManager.AddToRoleAsync(user, "Member");
+                }
+                await context.FantasiesDbSet.AddAsync(d);
+            }
+            await context.SaveChangesAsync();
+
 
             var admin = new AppUser
             {
